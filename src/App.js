@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import Timeslots from './TestCalendar';
-
+import Home from './Home';
 
 class App extends Component {
   render() {
     return (
-      <Timeslots />
+      <Home />
     );
   }
 }
