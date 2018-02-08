@@ -28,6 +28,8 @@ import IconButton from 'material-ui/IconButton';
 import Menu, { MenuItem } from 'material-ui/Menu'; // 
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
+import SignIn from './SignIn';import ReactDOM from 'react-dom';
+import Home from './Home';
 
 import 'typeface-roboto' 
 
@@ -68,6 +70,8 @@ class MenuAppBar extends React.Component {
       const { anchorEl } = this.state;      // Same as above. 
       const open = anchorEl;
   
+//onClick={()=>{this.setState({showSignIn: !this.state.showSignIn})}}
+
       return (
         <div className={classes.root}>
           <AppBar position="static">
@@ -87,6 +91,14 @@ class MenuAppBar extends React.Component {
                     >
                     <AccountCircle />
                     </IconButton>
+
+                    <IconButton
+                    onClick={()=>{if (document.getElementsByClassName('rbc-calendar').length) ReactDOM.render(<SignIn />, document.getElementById('root')); else ReactDOM.render(<Home />, document.getElementById('root'));}}
+                    color="inherit"
+                    >
+                    <AccountCircle />
+                    </IconButton>
+
                     <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
