@@ -29,7 +29,6 @@ import Menu, { MenuItem } from 'material-ui/Menu'; //
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 import SignIn from './SignIn';import ReactDOM from 'react-dom';
-import Home from './Home';
 
 import 'typeface-roboto' 
 
@@ -65,6 +64,10 @@ class MenuAppBar extends React.Component {
       this.setState({ anchorEl: null });   // Do understand setState receives an object thus the curly brackets.
     };
   
+    handleSignOut = () => {
+      ReactDOM.render(<SignIn />, document.getElementById('root')); // you know what this does. it works as expected.
+    }
+
     render() {
       const { classes } = this.props;       // ES6 Deconstruction. This is extremely common in React.
       const { anchorEl } = this.state;      // Same as above. 
@@ -92,13 +95,6 @@ class MenuAppBar extends React.Component {
                     <AccountCircle />
                     </IconButton>
 
-                    <IconButton
-                    onClick={()=>{if (document.getElementsByClassName('rbc-calendar').length) ReactDOM.render(<SignIn />, document.getElementById('root')); else ReactDOM.render(<Home />, document.getElementById('root'));}}
-                    color="inherit"
-                    >
-                    <AccountCircle />
-                    </IconButton>
-
                     <Menu
                     id="menu-appbar"
                     anchorEl={anchorEl}
@@ -115,6 +111,7 @@ class MenuAppBar extends React.Component {
                     >
                     <MenuItem onClick={this.handleClose}>Profile</MenuItem>
                     <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                    <MenuItem onClick={this.handleSignOut}>SignOut</MenuItem>
                     </Menu>
                 </div>
             </Toolbar>
