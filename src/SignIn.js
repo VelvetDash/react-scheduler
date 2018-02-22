@@ -65,6 +65,7 @@ export default class SignIn extends Component {
               </tbody></table>
           </div>
         </form>
+        <div class="g-signin2" data-onsuccess="onSignIn"></div>
       </div>
         );
     }
